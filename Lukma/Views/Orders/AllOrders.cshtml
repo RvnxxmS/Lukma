@@ -1,0 +1,6 @@
+@model IEnumerable<Lukma.Models.Order>
+<h2>All Orders</h2>
+@foreach (var order in Model)
+{
+    <p>Order #@order.Id - @order.Status @Html.DropDownList("Status", Enum.GetNames(typeof(Lukma.Models.OrderStatus)).Select(s => new SelectListItem { Text = s, Value = s }), new { onchange = "location.href='/Orders/UpdateStatus/" + order.Id + "?status=' + this.value" })</p>
+}

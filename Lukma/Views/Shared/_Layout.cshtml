@@ -1,0 +1,125 @@
+﻿```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Lukma - @ViewBag.Title 💕</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #fafafa; /* Off-white for a softer background */
+            font-family: 'Pacifico', cursive;
+            color: #333333; /* Darker text for readability */
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #ff9cc7; /* Light coral pink */
+            border: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
+        }
+
+        .navbar-brand, .navbar-nav > li > a {
+            color: #fafafa !important; /* Off-white text */
+            font-size: 18px;
+            padding: 12px 15px;
+        }
+
+            .navbar-brand:hover, .navbar-nav > li > a:hover {
+                color: #e6c3d3 !important; /* Pale pink hover */
+            }
+
+        .btn-pink {
+            background-color: #ff9cc7;
+            color: #fafafa;
+            border-radius: 12px;
+            padding: 6px 12px;
+            border: 1px solid #e6c3d3;
+        }
+
+            .btn-pink:hover {
+                background-color: #e6c3d3;
+                color: #fafafa;
+            }
+
+        h2 {
+            color: #ff9cc7;
+            text-shadow: 1px 1px 1px #fafafa;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .container.body-content {
+            margin-top: 80px;
+            background-color: #ffffff; /* Pure white for content */
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #e6c3d3; /* Pale pink border */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very soft shadow */
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #ff9cc7;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .cute-message {
+            text-align: center;
+            color: #ff9cc7;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff0f5; /* Lightest pink for message */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">💕 Lukma</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("All Orders", "AllOrders", "Orders")</li>
+                    }
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("My Orders", "MyOrders", "Orders")</li>
+                        <li>@Html.ActionLink("Cart", "ViewCart", "Cart")</li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="cute-message">Enjoy a sweet dining experience with Lukma! 💕</div>
+        @RenderBody()
+        <hr style="border-color: #e6c3d3;" />
+        <footer>
+            <p>© @DateTime.Now.Year - Crafted with 💕 by Raneem, Saly & Tamar</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

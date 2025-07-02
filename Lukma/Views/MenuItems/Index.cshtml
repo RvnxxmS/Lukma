@@ -1,0 +1,16 @@
+@model IEnumerable<Lukma.Models.MenuItem>
+<h2>Menu</h2>
+<div style="background-color: #ffe6f0; padding: 15px; border-radius: 10px;">
+    @foreach (var item in Model)
+    {
+        <div style="margin-bottom: 10px;">
+            <strong>@item.Name</strong> - $@item.Price <br />
+            <small>@item.Description</small> <br />
+            @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { menuItemId = item.Id }, new { @class = "btn btn-pink" })
+        </div>
+    }
+</div>
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Add Menu Item", "Create", new { restaurantId = ViewBag.RestaurantId }, new { @class = "btn btn-pink" })
+}

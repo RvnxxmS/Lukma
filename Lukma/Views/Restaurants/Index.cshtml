@@ -1,0 +1,13 @@
+@model IEnumerable<Lukma.Models.Restaurant>
+<h2>Restaurants</h2>
+<div style="background-color: #ffe6f0; padding: 15px; border-radius: 10px;">
+    @foreach (var restaurant in Model)
+    {
+        <div style="margin-bottom: 10px;">
+            <strong>@restaurant.Name</strong> - @restaurant.Location <br />
+            @Html.ActionLink("View Menu", "Index", "MenuItems", new { restaurantId = restaurant.Id }, new { @class = "btn btn-pink" })
+        </div>
+    }
+</div>
+@if (User.IsInRole("Admin"))
+{@Html.ActionLink("Add Restaurant", "Create", new { @class = "btn btn-pink" })}

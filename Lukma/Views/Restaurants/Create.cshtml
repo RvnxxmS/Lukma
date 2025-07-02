@@ -1,0 +1,8 @@
+@model Lukma.Models.Restaurant
+<h2>Add Restaurant</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name) @Html.TextBoxFor(m => m.Name)
+    @Html.LabelFor(m => m.Location) @Html.TextBoxFor(m => m.Location)
+    <button type="submit">Save</button>
+}

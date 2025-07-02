@@ -1,0 +1,9 @@
+@model Lukma.Models.MenuItem
+<h2>Add Menu Item</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name) @Html.TextBoxFor(m => m.Name)
+    @Html.LabelFor(m => m.Description) @Html.TextBoxFor(m => m.Description)
+    @Html.LabelFor(m => m.Price) @Html.TextBoxFor(m => m.Price)
+    <button type="submit">Save</button>
+}

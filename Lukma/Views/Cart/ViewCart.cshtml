@@ -1,0 +1,7 @@
+@model Lukma.Models.Cart
+<h2>Your Cart</h2>
+@foreach (var item in Model.Items)
+{
+    <p>@item.MenuItemName - @item.Quantity x @item.Price</p>
+}
+@Html.ActionLink("Place Order", "PlaceOrder", "Orders", null, new { @class = "btn btn-pink" })

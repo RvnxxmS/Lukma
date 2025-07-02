@@ -1,0 +1,7 @@
+@model IEnumerable<Lukma.Models.Order>
+<h2>My Orders</h2>
+@foreach (var order in Model)
+{
+    <p>Order #@order.Id - @order.Status @if (order.Status == Lukma.Models.OrderStatus.Pending)
+    {@Html.ActionLink("Cancel", "CancelOrder", new { id = order.Id })}</p>
+}
